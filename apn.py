@@ -14,7 +14,7 @@ def euclid(x,y):
         print("we multiply",-1*y,"by -1 to get",y)
 
     print(x,"mod",y, "=", x%y)
-        
+    
     if (x % y == 0):
         print("\nthe gcd is",y)
         return y
@@ -31,7 +31,7 @@ def print_list(L):
     s=""
     for x in L:
         s += str(x)+","
-    print("["+s[0:-1]+"]")
+        print("["+s[0:-1]+"]")
 
 
 def sieve_gen(n):
@@ -45,12 +45,12 @@ def sieve_gen(n):
             j+=1
         for x in B:
             A[x] = False
-    P = []
-    a = 2
+            P = []
+            a = 2
     while a < n:
         if A[a]:
             P.append(a)
-        a+=1
+            a+=1
     return P
 
 def test_sieve():
@@ -65,7 +65,7 @@ def trial_division(n):
         if n%x == 0:
             print(n, "is not prime it is divisible by",x)
             return False
-    print(n, "is prime")
+        print(n, "is prime")
     return True
 
 def sieve_primality(n):
@@ -83,28 +83,29 @@ def sieve_primality(n):
 
 def fermat_little_theorem(n):
     if n<4:
-        return True
         print(n,"is prime")
+        return True
     else:
+        
         a = random.randint(2,n-2)
-        for x in range(n):
-            if n%a==0:
-                print(n, "is not prime, it is divisible by", a)
+        print("picking a random number",a,"to test with")
+        if n%a==0:
+            print(n, "is not prime, it is divisible by", a)
+            return False
+        else:
+            print("testing if (",a,"^ (",n,"- 1 ) %",n,") == 0")
+            if ((a**(n-1) - 1)%n == 0):
+                print(n, "is prime")
                 return False
             else:
-                print("testing if (",a,"^ (",n,"- 1 ) %",n,"== 0")
-                if ((a**(n-1) - 1)%n == 0):
-                    print(n, "is prime")
-                    return False
-                else:
-                    print(n, "is not prime")
-                    return True
+                print(n, "is not prime")
+                return True
 
 def test_primality():
     print("Tests for Primality:")
     print("1: Trial Division")
     print("2: Sieve of Eratosthenes")
-    print("3: Fermat little Theroem")
+    print("3: Fermat Little Theroem")
     test = input("pick a test: ")
     if int(test) > 0 and int(test) < 4:
         n = input("enter a number to test: ")
@@ -114,7 +115,7 @@ def test_primality():
             sieve_primality(int(n))
         elif int(test) == 3:
             fermat_little_theorem(int(n))
-        
+            
     else:
         test_primality()
         
