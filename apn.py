@@ -31,7 +31,7 @@ def print_list(L):
     s=""
     for x in L:
         s += str(x)+","
-        print("["+s[0:-1]+"]")
+    print("["+s[0:-1]+"]")
 
 
 def sieve_gen(n):
@@ -45,12 +45,12 @@ def sieve_gen(n):
             j+=1
         for x in B:
             A[x] = False
-            P = []
-            a = 2
+    P = []
+    a = 2
     while a < n:
         if A[a]:
             P.append(a)
-            a+=1
+        a+=1
     return P
 
 def test_sieve():
@@ -71,7 +71,10 @@ def trial_division(n):
 def sieve_primality(n):
     print("generating prime numbers using Sieve of Eratosthenes")
     print_list(sieve_gen(n))
-    if (n<4):
+    if (n<=1):
+        print(n, "is not prime")
+        return False
+    elif (n<4):
         print(n, "is prime")
         return True
     elif (sieve_gen(n)[-1] == n):
@@ -96,10 +99,10 @@ def fermat_little_theorem(n):
             print("testing if (",a,"^ (",n,"- 1 ) %",n,") == 0")
             if ((a**(n-1) - 1)%n == 0):
                 print(n, "is prime")
-                return False
+                return True
             else:
                 print(n, "is not prime")
-                return True
+                return False
 
 def test_primality():
     print("Tests for Primality:")
