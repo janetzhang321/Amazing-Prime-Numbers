@@ -224,21 +224,22 @@ def count_twin_primes():
         i = i + 1
     return ret
 
-def plotx():
+def plotx(n):
         temp = million_primes()
-        greatest = temp[10]
+        #greatest = temp[n]
         plot = []
         i = 0
-        while i < greatest:
+        while i < n:
             numLess = 0
             for y in temp:
                 if y < i:
                     numLess = numLess + 1
-            plot.append( numLess)
+            plot.append(numLess)
             i = i +1
-        plt.plot(plot)
+        #print(range(i))
+        #print(plot)
+        plt.plot(plot,range(i))#,"ro")
         plt.ylabel("Number of primes less than")
-        #plt.show
         plt.show(block=True)
 
 def test_primality():
@@ -356,7 +357,8 @@ def test_primality():
 '''
         print("Twin primes:")
         print(count_twin_primes())
-        plotx()    
+        n = input("enter the number of primes to generate until: ")
+        plotx(int(n))    
     else:
         test_primality()
 
