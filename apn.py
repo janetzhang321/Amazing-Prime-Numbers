@@ -252,7 +252,7 @@ def plotPrime():
         while k < 10:
             i = 0;
             temp = count_last_following(j,k)
-            while i > temp:
+            while i < temp:
                 x.append(j)
                 y.append(k)
                 i = i + 1
