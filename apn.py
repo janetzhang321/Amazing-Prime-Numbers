@@ -232,10 +232,10 @@ def plotx():
                     numLess = numLess + 1
             plot.append( numLess)
             i = i +1
-            
         plt.plot(plot)
         plt.ylabel("Number of primes less than")
-        plt.show
+        #plt.show
+        plt.show(block=True)
 
 def test_primality():
     print("Tests for Primality:")
@@ -343,7 +343,6 @@ def test_primality():
 '''
         print("Twin primes:")
         print(count_twin_primes())
-
         plotx()    
     else:
         test_primality()
