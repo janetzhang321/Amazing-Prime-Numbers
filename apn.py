@@ -1,5 +1,6 @@
 import math
 import random
+import time
 import matplotlib.pyplot as plt
 
 #1 EUCLID'S ALGORITHM
@@ -112,7 +113,8 @@ def fermat_little_theorem(n):
                 print(n, "is not prime")
                 return False
 
-#4 TRIAL DIVISION                                                                                                                                                                                                                             
+#4 TRIAL DIVISION    
+
 def trial_division_factorization(n):
     ret = []
     temp = n
@@ -164,6 +166,8 @@ def fermat_algorithm(n):
                 y = 0
         else:
             y = y + 1
+    
+        
     return ret
 
 #5 Prime distribution
@@ -259,9 +263,15 @@ def test_primality():
     elif int(test) < 6:
         n = input("enter a number to factor: ")
         if int(test) == 4:
+            b = time.time()
             trial_division_factorization(int(n))
+            e = time.time()
+            print("in", round(e-b,5), "s")
         elif int(test) == 5:
+            b = time.time()
             print(fermat_algorithm(int(n)))
+            e = time.time()
+            print("in", round(e-b,5), "s")
     elif int(test) == 6:
         '''
             print("Total primes:")
