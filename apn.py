@@ -68,6 +68,13 @@ def trial_division(n):
         print(n, "is prime")
     return True
 
+def trial_division_printless(n):
+    for x in sieve_gen(int(math.sqrt(n))):
+        if n%x == 0:
+            return False
+    return True
+
+
 def sieve_primality(n):
     print("generating prime numbers using Sieve of Eratosthenes")
     print_list(sieve_gen(n))
@@ -118,12 +125,10 @@ def trial_division_factorization(n):
     print(ret)
     return ret
 
-def prime(n):
-    return all([(n % j) for j in range(2, int(n**0.5)+1)]) and n>1
 
 def fermat_algorithm(n):
     ret = []
-    if prime(n):
+    if trial_division_printless(n):
         ret.append(n)
         return ret
     if n % 2 == 0:
@@ -135,7 +140,7 @@ def fermat_algorithm(n):
     while temp > 1:
 #        print(temp)
 #        print(y);
-        if prime(temp):
+        if trial_division_printless(temp):
             ret.append(temp)
     
             return ret
@@ -145,7 +150,7 @@ def fermat_algorithm(n):
         if math.floor(math.sqrt(y * y + temp)) == math.sqrt(y * y + temp) and (x - y) != 1:
 #            print(x-y)
             temp2 = max(x-y,x+y)
-            if(prime(temp2)):
+            if(trial_division_printless(temp2)):
                 ret.append(temp2)
                 temp = temp / (temp2)
                 y = 0
@@ -157,6 +162,48 @@ def fermat_algorithm(n):
             y = y + 1
     return ret
 
+#5 Prime distribution
+
+def million_primes():
+    file = open("primes1.txt","r")
+    lines = file.readlines()
+    file.close()
+    temp = []
+    ret = []
+    for i in lines:
+        temp.extend(i.split(" "))
+    for i in temp:
+        if i.isdigit():
+            ret.append(i)
+    return ret
+
+def count():
+    return len(million_primes())
+def count_last(n):
+    ret = 0
+    temp = million_primes()
+    for i in temp:
+        if int(i) % 10 == n:
+            ret = ret + 1
+    return ret
+
+def percent_last(n):
+    return count_last(n) * 100.0 / 1000000.0
+
+def count_last_following(n1,n2):
+    ret = 0
+    temp = million_primes()
+    i = 0;
+    while i < 1000000:
+        if int(temp[i]) % 10 == n1:
+            if int(temp[i+1]) % 10 == n2:
+                ret = ret + 1
+        i = i + 1
+    return ret
+
+def percent_last_following(n1,n2):
+    return count_last_following(n1,n2) * 100 / count_last(n1)
+
 def test_primality():
     print("Tests for Primality:")
     print("1: Trial Division")
@@ -164,8 +211,9 @@ def test_primality():
     print("3: Fermat Little Theroem")
     print("4: Trial Division")
     print("5: Fermat Factorization Algorithm")
+    print("6: Prime dsitribution")
     test = input("pick a test: ")
-    if int(test) > 0 and int(test) < 6:
+    if int(test) > 0 and int(test) < 7:
         n = input("enter a number to test: ")
         if int(test) == 1:
             trial_division(int(n))
@@ -177,7 +225,26 @@ def test_primality():
             trial_division_factorization(int(n))
         elif int(test) == 5:
             print(fermat_algorithm(int(n)))
+        elif int(test) == 6:
+            print("Total primes:")
+            print(count())
+            print("Primes ending in 1:")
+            print(count_last(1))
+            print(percent_last(1))
+            print("Primes ending in 3:")
+            print(count_last(3))
+            print(percent_last(3))
+            print("Primes ending in 7:")
+            print(count_last(7))
+            print(percent_last(7))
+            print("Primes ending in 9:")
+            print(count_last(9))
+            print(percent_last(9))
 
+            print("Primes ending in 1 followed by a 1:")
+            count_last_following(1,1)
+            percent_last_following(1,1)
+            
     else:
         test_primality()
 
