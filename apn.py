@@ -104,13 +104,68 @@ def fermat_little_theorem(n):
                 print(n, "is not prime")
                 return False
 
+#4 TRIAL DIVISION                                                                                                                                                                                                                             
+def trial_division_factorization(n):
+    ret = []
+    temp = n
+    i = 2
+    while i <= math.sqrt(n) + 1:
+        if temp % i == 0:
+            ret.append(i)
+            temp = temp / i
+        else:
+            i = i + 1
+    print(ret)
+    return ret
+
+def prime(n):
+    return all([(n % j) for j in range(2, int(n**0.5)+1)]) and n>1
+
+def fermat_algorithm(n):
+    ret = []
+    if prime(n):
+        ret.append(n)
+        return ret
+    if n % 2 == 0:
+        ret.append(2)
+        ret.extend(fermat_algorithm(n/2))
+        return ret
+    temp = n
+    y = 0
+    while temp > 1:
+#        print(temp)
+#        print(y);
+        if prime(temp):
+            ret.append(temp)
+    
+            return ret
+
+        x = math.sqrt(y * y + temp)
+
+        if math.floor(math.sqrt(y * y + temp)) == math.sqrt(y * y + temp) and (x - y) != 1:
+#            print(x-y)
+            temp2 = max(x-y,x+y)
+            if(prime(temp2)):
+                ret.append(temp2)
+                temp = temp / (temp2)
+                y = 0
+            else:
+                ret.extend(fermat_algorithm(temp2))
+                temp = temp / temp2
+                y = 0
+        else:
+            y = y + 1
+    return ret
+
 def test_primality():
     print("Tests for Primality:")
     print("1: Trial Division")
     print("2: Sieve of Eratosthenes")
     print("3: Fermat Little Theroem")
+    print("4: Trial Division")
+    print("5: Fermat Factorization Algorithm")
     test = input("pick a test: ")
-    if int(test) > 0 and int(test) < 4:
+    if int(test) > 0 and int(test) < 6:
         n = input("enter a number to test: ")
         if int(test) == 1:
             trial_division(int(n))
@@ -118,10 +173,14 @@ def test_primality():
             sieve_primality(int(n))
         elif int(test) == 3:
             fermat_little_theorem(int(n))
-            
+        elif int(test) == 4:
+            trial_division_factorization(int(n))
+        elif int(test) == 5:
+            print(fermat_algorithm(int(n)))
+
     else:
         test_primality()
-        
+
     
 if (__name__=="__main__"):
     #test_euclid()
