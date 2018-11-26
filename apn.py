@@ -1,5 +1,6 @@
 import math
 import random
+import matplotlib.pyplot as plt
 
 #1 EUCLID'S ALGORITHM
 def euclid(x,y):
@@ -116,15 +117,15 @@ def trial_division_factorization(n):
     ret = []
     temp = n
     A = sieve_gen(n);
-    #i = 2
-    #while i <= math.sqrt(n) + 1:
-    for i in A:
-        while temp % i == 0:
+    i = 2
+    while i <= temp:#math.sqrt(n) + 1:
+    #for i in A:
+        if temp % i == 0:
             ret.append(i)
             temp = temp / i
             
-        #else:
-        #    i = i + 1
+        else:
+            i = i + 1
     print(ret)
     return ret
 
@@ -177,7 +178,7 @@ def million_primes():
         temp.extend(i.split(" "))
     for i in temp:
         if i.isdigit():
-            ret.append(i)
+            ret.append(int(i))
     return ret
 
 def count():
@@ -221,7 +222,7 @@ def count_twin_primes():
 
 def plotx():
         temp = million_primes()
-        greatest = temp[500000]
+        greatest = temp[10]
         plot = []
         i = 0
         while i < greatest:
@@ -246,7 +247,7 @@ def test_primality():
     print("5: Fermat Factorization Algorithm")
     print("6: Prime distribution")
     test = input("pick a test: ")
-    if int(test) > 0 and int(test) < 7:
+    if int(test) > 0 and int(test) < 6:
         n = input("enter a number to test: ")
         if int(test) == 1:
             trial_division(int(n))
@@ -258,7 +259,8 @@ def test_primality():
             trial_division_factorization(int(n))
         elif int(test) == 5:
             print(fermat_algorithm(int(n)))
-        elif int(test) == 6:
+    if int(test) == 6:
+        '''
             print("Total primes:")
             print(count())
             print("Primes ending in 1:")
@@ -338,11 +340,11 @@ def test_primality():
             print("Primes ending in 9 followed by a 9:")
             print(count_last_following(9,9))
             print(percent_last_following(9,9))
+'''
+        print("Twin primes:")
+        print(count_twin_primes())
 
-            print("Twin primes:")
-            print(count_twin_primes())
-
-            plotx()    
+        plotx()    
     else:
         test_primality()
 
