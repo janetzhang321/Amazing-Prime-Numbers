@@ -118,7 +118,7 @@ def trial_division_factorization(n):
     temp = n
     A = sieve_gen(n);
     i = 2
-    while i <= temp:#math.sqrt(n) + 1:
+    while i <= temp:
     #for i in A:
         if temp % i == 0:
             ret.append(i)
@@ -133,7 +133,7 @@ def trial_division_factorization(n):
 def fermat_algorithm(n):
     ret = []
     if trial_division_printless(n):
-        ret.append(n)
+        ret.append(int(n))
         return ret
     if n % 2 == 0:
         ret.append(2)
@@ -145,7 +145,7 @@ def fermat_algorithm(n):
 #        print(temp)
 #        print(y);
         if trial_division_printless(temp):
-            ret.append(temp)
+            ret.append(int(temp))
     
             return ret
 
@@ -155,7 +155,7 @@ def fermat_algorithm(n):
 #            print(x-y)
             temp2 = max(x-y,x+y)
             if(trial_division_printless(temp2)):
-                ret.append(temp2)
+                ret.append(int(temp2))
                 temp = temp / (temp2)
                 y = 0
             else:
@@ -245,9 +245,10 @@ def test_primality():
     print("Prime Factorization:")
     print("4: Trial Division")
     print("5: Fermat Factorization Algorithm")
+    print("Prime Distribution:")
     print("6: Prime distribution")
     test = input("pick a test: ")
-    if int(test) > 0 and int(test) < 6:
+    if int(test) > 0 and int(test) < 4:
         n = input("enter a number to test: ")
         if int(test) == 1:
             trial_division(int(n))
@@ -255,11 +256,13 @@ def test_primality():
             sieve_primality(int(n))
         elif int(test) == 3:
             fermat_little_theorem(int(n))
-        elif int(test) == 4:
+    elif int(test) < 6:
+        n = input("enter a number to factor: ")
+        if int(test) == 4:
             trial_division_factorization(int(n))
         elif int(test) == 5:
             print(fermat_algorithm(int(n)))
-    if int(test) == 6:
+    elif int(test) == 6:
         '''
             print("Total primes:")
             print(count())
