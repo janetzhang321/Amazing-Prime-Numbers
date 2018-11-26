@@ -115,13 +115,16 @@ def fermat_little_theorem(n):
 def trial_division_factorization(n):
     ret = []
     temp = n
-    i = 2
-    while i <= math.sqrt(n) + 1:
-        if temp % i == 0:
+    A = sieve_gen(n);
+    #i = 2
+    #while i <= math.sqrt(n) + 1:
+    for i in A:
+        while temp % i == 0:
             ret.append(i)
             temp = temp / i
-        else:
-            i = i + 1
+            
+        #else:
+        #    i = i + 1
     print(ret)
     return ret
 
@@ -209,9 +212,10 @@ def test_primality():
     print("1: Trial Division")
     print("2: Sieve of Eratosthenes")
     print("3: Fermat Little Theroem")
+    print("Prime Factorization:")
     print("4: Trial Division")
     print("5: Fermat Factorization Algorithm")
-    print("6: Prime dsitribution")
+    print("6: Prime distribution")
     test = input("pick a test: ")
     if int(test) > 0 and int(test) < 7:
         n = input("enter a number to test: ")
