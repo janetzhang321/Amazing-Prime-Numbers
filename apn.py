@@ -197,15 +197,44 @@ def count_last_following(n1,n2):
     ret = 0
     temp = million_primes()
     i = 0;
-    while i < 1000000:
+    while i < 999999:
         if int(temp[i]) % 10 == n1:
             if int(temp[i+1]) % 10 == n2:
                 ret = ret + 1
         i = i + 1
     return ret
 
+
 def percent_last_following(n1,n2):
-    return count_last_following(n1,n2) * 100 / count_last(n1)
+    return count_last_following(n1,n2) * 100.0 / count_last(n1)
+
+
+def count_twin_primes():
+    ret = 0
+    temp = million_primes()
+    i = 0;
+    while i < 999999:
+        if int(temp[i]) - int(temp[i + 1]) > -3 and int(temp[i]) - int(temp[i + 1]) < 3:
+                ret = ret + 1
+        i = i + 1
+    return ret
+
+def plotx():
+        temp = million_primes()
+        greatest = temp[500000]
+        plot = []
+        i = 0
+        while i < greatest:
+            numLess = 0
+            for y in temp:
+                if y < i:
+                    numLess = numLess + 1
+            plot.append( numLess)
+            i = i +1
+            
+        plt.plot(plot)
+        plt.ylabel("Number of primes less than")
+        plt.show
 
 def test_primality():
     print("Tests for Primality:")
@@ -246,9 +275,74 @@ def test_primality():
             print(percent_last(9))
 
             print("Primes ending in 1 followed by a 1:")
-            count_last_following(1,1)
-            percent_last_following(1,1)
-            
+            print(count_last_following(1,1))
+            print(percent_last_following(1,1))
+
+            print("Primes ending in 1 followed by a 3:")
+            print(count_last_following(1,3))
+            print(percent_last_following(1,3))
+
+            print("Primes ending in 1 followed by a 7:")
+            print(count_last_following(1,7))
+            print(percent_last_following(1,7))
+
+            print("Primes ending in 1 followed by a 9:")
+            print(count_last_following(1,9))
+            print(percent_last_following(1,9))
+
+            print("Primes ending in 3 followed by a 1:")
+            print(count_last_following(3,1))
+            print(percent_last_following(3,1))
+
+            print("Primes ending in 3 followed by a 3:")
+            print(count_last_following(3,3))
+            print(percent_last_following(3,3))
+
+            print("Primes ending in 3 followed by a 7:")
+            print(count_last_following(3,7))
+            print(percent_last_following(3,7))
+
+            print("Primes ending in 3 followed by a 9:")
+            print(count_last_following(3,9))
+            print(percent_last_following(3,9))
+
+            print("Primes ending in 7 followed by a 1:")
+            print(count_last_following(7,1))
+            print(percent_last_following(7,1))
+
+
+            print("Primes ending in 7 followed by a 3:")
+            print(count_last_following(7,3))
+            print(percent_last_following(7,3))
+
+            print("Primes ending in 7 followed by a 7:")
+            print(count_last_following(7,7))
+            print(percent_last_following(7,7))
+
+            print("Primes ending in 7 followed by a 9:")
+            print(count_last_following(7,9))
+            print(percent_last_following(7,9))
+
+            print("Primes ending in 9 followed by a 1:")
+            print(count_last_following(9,1))
+            print(percent_last_following(9,1))
+
+            print("Primes ending in 9 followed by a 3:")
+            print(count_last_following(9,3))
+            print(percent_last_following(9,3))
+
+            print("Primes ending in 9 followed by a 7:")
+            print(count_last_following(9,7))
+            print(percent_last_following(9,7))
+
+            print("Primes ending in 9 followed by a 9:")
+            print(count_last_following(9,9))
+            print(percent_last_following(9,9))
+
+            print("Twin primes:")
+            print(count_twin_primes())
+
+            plotx()    
     else:
         test_primality()
 
