@@ -290,14 +290,14 @@ def test_primality():
             print(euclid(int(n1), int(n2)))
             e = time.time()
             print 'in', round(e-b,5), 's'
-    if int(test) > 0 and int(test) < 3:
+    if int(test) > 1 and int(test) < 3:
         n = input("enter a number to test: ")
         if int(test) == 2:
             b = time.time()
             print(sieve_gen(n))
             e = time.time()
             print "in", round(e-b,5), "s"
-    if int(test) > 0 and int(test) < 6:
+    if int(test) > 2 and int(test) < 6:
         n = input("enter a number to test: ")
         if int(test) == 3:
             b = time.time()
@@ -315,7 +315,7 @@ def test_primality():
             e = time.time()
             print "in", round(e-b,5), "s" 
    
-    elif int(test) < 8:
+    elif int(test) > 5 and  int(test) < 8:
         n = input("enter a number to factor: ")
         if int(test) == 6:
             b = time.time()
