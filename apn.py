@@ -289,31 +289,31 @@ def test_primality():
             b = time.time()
             print(euclid(int(n1), int(n2)))
             e = time.time()
-            print("in", round(e-b,5), "s")
+            print 'in', round(e-b,5), 's'
     if int(test) > 0 and int(test) < 3:
         n = input("enter a number to test: ")
         if int(test) == 2:
             b = time.time()
             print(sieve_gen(n))
             e = time.time()
-            print("in", round(e-b,5), "s")
+            print "in", round(e-b,5), "s"
     if int(test) > 0 and int(test) < 6:
         n = input("enter a number to test: ")
         if int(test) == 3:
             b = time.time()
             trial_division(int(n))
             e = time.time()
-            print("in", round(e-b,5), "s")
+            print "in", round(e-b,5), "s"
         elif int(test) == 4:
             b = time.time()
             sieve_primality(int(n))
             e = time.time()
-            print("in", round(e-b,5), "s")
+            print "in", round(e-b,5), "s"
         elif int(test) == 5:
             b = time.time()        
             fermat_little_theorem(int(n))
             e = time.time()
-            print("in", round(e-b,5), "s")
+            print "in", round(e-b,5), "s" 
    
     elif int(test) < 8:
         n = input("enter a number to factor: ")
@@ -321,13 +321,13 @@ def test_primality():
             b = time.time()
             trial_division_factorization(int(n))
             e = time.time()
-            print("in", round(e-b,5), "s")
+            print "in", round(e-b,5), "s" 
         elif int(test) == 7:
             
             b = time.time()
             print(fermat_algorithm(int(n)))
             e = time.time()
-            print("in", round(e-b,5), "s")
+            print "in", round(e-b,5), "s" 
                 
     elif int(test) < 10:
         if int(test) == 8:
