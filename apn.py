@@ -294,7 +294,7 @@ def test_primality():
         n = input("enter a number to test: ")
         if int(test) == 2:
             b = time.time()
-            sieve_gen(int(n))
+            print(sieve_gen(int(n)))
             e = time.time()
             print("in", round(e-b,5), "s")
     if int(test) > 2 and int(test) < 6:
