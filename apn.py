@@ -272,6 +272,7 @@ def test_primality():
     print("5: Fermat Factorization Algorithm")
     print("Prime Distribution:")
     print("6: Prime distribution")
+    print("7: Visual Prime distribution rendering")
     test = input("pick a test: ")
     if int(test) > 0 and int(test) < 4:
         n = input("enter a number to test: ")
@@ -294,6 +295,9 @@ def test_primality():
             print(fermat_algorithm(int(n)))
             e = time.time()
             print("in", round(e-b,5), "s")
+                
+    elif int(test) < 8:
+        if int(test) == 6:
             print("Total primes:")
             print(count())
             print("Primes ending in 1:")
@@ -379,8 +383,8 @@ def test_primality():
             n = input("enter the number of primes to generate until: ")
             plotx(int(n))
         
-    elif int(test) == 6:
-        plotPrime()
+        elif int(test) == 7:
+            plotPrime()
     else:
         test_primality()
 
