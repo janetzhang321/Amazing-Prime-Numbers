@@ -263,41 +263,74 @@ def plotPrime():
     plt.show(block = True)
         
 def test_primality():
+    print("Question 1")
+    print("1. Euclids")
+    print("Question 2")
+    print("2. Sieve Gen")
+    print("Question 3")
     print("Tests for Primality:")
-    print("1: Trial Division")
-    print("2: Sieve of Eratosthenes")
-    print("3: Fermat Little Theroem")
+    print("3: Trial Division")
+    print("4: Sieve of Eratosthenes")
+    print("5: Fermat Little Theroem")
+    print("Question 4")
     print("Prime Factorization:")
-    print("4: Trial Division")
-    print("5: Fermat Factorization Algorithm")
+    print("6: Trial Division")
+    print("7: Fermat Factorization Algorithm")
+    print("Question 5")
     print("Prime Distribution:")
-    print("6: Prime distribution")
-    print("7: Visual Prime distribution rendering")
+    print("8: Prime distribution")
+    print("Question 6")
+    print("9: Visual Prime distribution rendering")
     test = input("pick a test: ")
-    if int(test) > 0 and int(test) < 4:
-        n = input("enter a number to test: ")
+    if int(test) > 0 and int(test) < 2:
+        n1 = input("enter a first number to test: ")
+        n2 = input("enter a second number to test: ")
         if int(test) == 1:
+            b = time.time()
+            print(euclid(int(n1), int(n2)))
+            e = time.time()
+            print("in", round(e-b,5), "s")
+    if int(test) > 0 and int(test) < 3:
+        n = input("enter a number to test: ")
+        if int(test) == 2:
+            b = time.time()
+            print(sieve_gen(n))
+            e = time.time()
+            print("in", round(e-b,5), "s")
+    if int(test) > 0 and int(test) < 6:
+        n = input("enter a number to test: ")
+        if int(test) == 3:
+            b = time.time()
             trial_division(int(n))
-        elif int(test) == 2:
+            e = time.time()
+            print("in", round(e-b,5), "s")
+        elif int(test) == 4:
+            b = time.time()
             sieve_primality(int(n))
-        elif int(test) == 3:
+            e = time.time()
+            print("in", round(e-b,5), "s")
+        elif int(test) == 5:
+            b = time.time()        
             fermat_little_theorem(int(n))
-    elif int(test) < 6:
+            e = time.time()
+            print("in", round(e-b,5), "s")
+   
+    elif int(test) < 8:
         n = input("enter a number to factor: ")
-        if int(test) == 4:
+        if int(test) == 6:
             b = time.time()
             trial_division_factorization(int(n))
             e = time.time()
             print("in", round(e-b,5), "s")
-        elif int(test) == 5:
+        elif int(test) == 7:
             
             b = time.time()
             print(fermat_algorithm(int(n)))
             e = time.time()
             print("in", round(e-b,5), "s")
                 
-    elif int(test) < 8:
-        if int(test) == 6:
+    elif int(test) < 10:
+        if int(test) == 8:
             print("Total primes:")
             print(count())
             print("Primes ending in 1:")
@@ -383,7 +416,7 @@ def test_primality():
             n = input("enter the number of primes to generate until: ")
             plotx(int(n))
         
-        elif int(test) == 7:
+        elif int(test) == 9:
             plotPrime()
     else:
         test_primality()
