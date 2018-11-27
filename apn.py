@@ -2,6 +2,7 @@ import math
 import random
 import time
 import matplotlib.pyplot as plt
+import numpy as np
 
 #1 EUCLID'S ALGORITHM
 def euclid(x,y):
@@ -229,7 +230,7 @@ def plotx(n):
         #greatest = temp[n]
         plot = []
         i = 0
-        while i < n:
+        while i <= n:
             numLess = 0
             for y in temp:
                 if y < i:
@@ -241,7 +242,28 @@ def plotx(n):
         plt.plot(plot,range(i))#,"ro")
         plt.ylabel("Number of primes less than")
         plt.show(block=True)
-
+#6 Prime Representation
+def plotPrime():
+    x = []
+    y = []
+    j = 0;
+    k = 0;
+    while j < 10:
+        k = 0;
+        while k < 10:
+            i = 0;
+            temp = count_last_following(j,k)
+            while i < temp:
+                x.append(j)
+                y.append(k)
+                i = i + 1
+            k = k + 1
+        j = j + 1
+    print(x)
+    print(y)
+    plt.hist2d(x, y)
+    plt.show(block = True)
+        
 def test_primality():
     print("Tests for Primality:")
     print("1: Trial Division")
@@ -354,11 +376,13 @@ def test_primality():
             print("Primes ending in 9 followed by a 9:")
             print(count_last_following(9,9))
             print(percent_last_following(9,9))
-'''
+
         print("Twin primes:")
         print(count_twin_primes())
         n = input("enter the number of primes to generate until: ")
-        plotx(int(n))    
+        plotx(int(n))  
+'''  
+        plotPrime()
     else:
         test_primality()
 
