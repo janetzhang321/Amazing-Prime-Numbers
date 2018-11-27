@@ -68,7 +68,7 @@ def trial_division(n):
         if n%x == 0:
             print(n, "is not prime it is divisible by",x)
             return False
-        print(n, "is prime")
+    print(n, "is prime")
     return True
 
 def trial_division_printless(n):
@@ -287,14 +287,14 @@ def test_primality():
         n2 = input("enter a second number to test: ")
         if int(test) == 1:
             b = time.time()
-            print(euclid(int(n1), int(n2)))
+            euclid(int(n1), int(n2))
             e = time.time()
             print('in', round(e-b,5), 's')
     if int(test) > 1 and int(test) < 3:
         n = input("enter a number to test: ")
         if int(test) == 2:
             b = time.time()
-            print(sieve_gen(n))
+            sieve_gen(int(n))
             e = time.time()
             print("in", round(e-b,5), "s")
     if int(test) > 2 and int(test) < 6:
