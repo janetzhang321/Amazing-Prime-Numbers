@@ -145,8 +145,6 @@ def fermat_algorithm(n):
     temp = n
     y = 0
     while temp > 1:
-#        print(temp)
-#        print(y);
         if trial_division_printless(temp):
             ret.append(int(temp))
     
@@ -155,7 +153,6 @@ def fermat_algorithm(n):
         x = math.sqrt(y * y + temp)
 
         if math.floor(math.sqrt(y * y + temp)) == math.sqrt(y * y + temp) and (x - y) != 1:
-#            print(x-y)
             temp2 = max(x-y,x+y)
             if(trial_division_printless(temp2)):
                 ret.append(int(temp2))
@@ -171,7 +168,7 @@ def fermat_algorithm(n):
         
     return ret
 
-#5 Prime distribution
+#5 PRIME DISTRIBUTION
 
 def million_primes():
     file = open("primes1.txt","r")
@@ -227,7 +224,6 @@ def count_twin_primes():
 
 def plotx(n):
         temp = million_primes()
-        #greatest = temp[n]
         plot = []
         i = 0
         while i <= n:
@@ -237,12 +233,13 @@ def plotx(n):
                     numLess = numLess + 1
             plot.append(numLess)
             i = i +1
-        #print(range(i))
-        #print(plot)
-        plt.plot(plot,range(i))#,"ro")
-        plt.ylabel("Number of primes less than")
+        plt.plot(range(i),plot)
+        plt.title("Number of Prime Numbers Below a Given Prime Number")
+        plt.xlabel("Prime Number")
+        plt.ylabel("Number of Primes")
         plt.show(block=True)
-#6 Prime Representation
+        
+#6 PRIME REPRESENTATION
 def plotPrime():
     x = []
     y = []
@@ -259,9 +256,10 @@ def plotPrime():
                 i = i + 1
             k = k + 1
         j = j + 1
-    print(x)
-    print(y)
     plt.hist2d(x, y)
+    plt.title("Number of Prime Numbers Ending in a Given Digit vs The Next Prime Number Ending in a Given Digit")
+    plt.xlabel("Primes Ending in")
+    plt.ylabel("Following Primes Ending in")
     plt.show(block = True)
         
 def test_primality():
@@ -291,12 +289,11 @@ def test_primality():
             e = time.time()
             print("in", round(e-b,5), "s")
         elif int(test) == 5:
+            
             b = time.time()
             print(fermat_algorithm(int(n)))
             e = time.time()
             print("in", round(e-b,5), "s")
-    elif int(test) == 6:
-        '''
             print("Total primes:")
             print(count())
             print("Primes ending in 1:")
@@ -348,7 +345,6 @@ def test_primality():
             print(count_last_following(7,1))
             print(percent_last_following(7,1))
 
-
             print("Primes ending in 7 followed by a 3:")
             print(count_last_following(7,3))
             print(percent_last_following(7,3))
@@ -377,17 +373,17 @@ def test_primality():
             print(count_last_following(9,9))
             print(percent_last_following(9,9))
 
-        print("Twin primes:")
-        print(count_twin_primes())
-        n = input("enter the number of primes to generate until: ")
-        plotx(int(n))  
-'''  
+            print("Twin primes:")
+            print(count_twin_primes())
+            
+            n = input("enter the number of primes to generate until: ")
+            plotx(int(n))
+        
+    elif int(test) == 6:
         plotPrime()
     else:
         test_primality()
 
     
 if (__name__=="__main__"):
-    #test_euclid()
-    #test_sieve()
     test_primality()
