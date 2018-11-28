@@ -122,7 +122,6 @@ def trial_division_factorization(n):
     A = sieve_gen(n);
     i = 2
     while i <= temp:
-    #for i in A:
         if temp % i == 0:
             ret.append(i)
             temp = temp / i
